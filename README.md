@@ -1,11 +1,597 @@
-[shastha-site.html](https://github.com/user-attachments/files/32759325/shastha-site.html)
+[[Uploading aqua_fish_farm_studio.html…]()
+shastha-site.html](https://github.com/user-attachments/files/32759325/shastha-site.html)
 [shastha-site.html](https://github.com/user-attachments/files/32759282/shastha-site.html)
 [Uploading shastha-site.html…]()
 [index-2.html](https://github.com/user-attachments/files/32739161/index-2.html)
 [index.html](https://github.com/user-attachments/files/32738961/index.html)
 <!DOCTYPE html><!DOCTYPE html<!DOCTYPE html>
 <html lang="en">
+<head><!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aqua Fish Farm - Premium Ornamental Fish & Supplies</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        aqua: {
+                            50: '#ecfeff',
+                            100: '#cffafe',
+                            500: '#06b6d4',
+                            600: '#0891b2',
+                            700: '#0e7490',
+                            800: '#155e75',
+                            900: '#164e63',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .fade-in { animation: fadeIn 0.3s ease-in-out forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Farm Logo / Branding -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="filterCategory('All'); window.scrollTo({top: 0, behavior: 'smooth'});">
+                <div class="w-12 h-12 bg-gradient-to-tr from-cyan-600 to-blue-600 rounded-2xl flex items-center justify-center text-white shadow-md shadow-cyan-500/20">
+                    <i class="fa-solid fa-fish text-2xl"></i>
+                </div>
+                <div>
+                    <h1 id="brandTitle" class="text-xl sm:text-2xl font-black tracking-tight text-slate-900">Aqua Fish Farm</h1>
+                    <p id="brandSubtitle" class="text-xs text-slate-500 font-medium">Direct Breeder & Supplier</p>
+                </div>
+            </div>
+
+            <!-- Navigation Actions -->
+            <div class="flex items-center space-x-3 sm:space-x-4">
+                <!-- Admin Mode Toggle -->
+                <button onclick="toggleAdminMode()" id="adminToggleBtn" class="flex items-center space-x-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition border border-slate-200 bg-slate-100 hover:bg-slate-200 text-slate-700">
+                    <i class="fa-solid fa-shield-halved text-cyan-600"></i>
+                    <span id="adminToggleText">Admin Mode: OFF</span>
+                </button>
+
+                <!-- Cart Button -->
+                <button onclick="toggleCartModal(true)" class="relative flex items-center space-x-2 bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2.5 rounded-xl font-semibold shadow-lg shadow-cyan-600/20 transition transform active:scale-95">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="hidden sm:inline">Cart</span>
+                    <span id="cartBadge" class="absolute -top-1.5 -right-1.5 bg-rose-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold shadow-md">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative bg-gradient-to-r from-cyan-900 via-slate-900 to-blue-950 text-white py-14 px-4 sm:px-6 lg:px-8 overflow-hidden shadow-inner">
+        <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#06b6d4_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="max-w-2xl text-center md:text-left">
+                <span class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 mb-4">
+                    <i class="fa-solid fa-water"></i>
+                    <span>High Quality Aquatic Livestock, Videos & Reviews</span>
+                </span>
+                <h2 id="heroHeading" class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4">
+                    Healthy Fish. Vibrant Aquariums. Direct From Our Farm.
+                </h2>
+                <p id="heroSubheading" class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                    Explore our premium selection featuring live videos of specimens, customer ratings, specialized feeds, and secure ordering!
+                </p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-3">
+                    <a href="#catalogSection" class="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-6 py-3 rounded-xl shadow-lg shadow-cyan-500/25 transition">
+                        Browse Catalog
+                    </a>
+                    <button onclick="openFarmSettingsModal()" id="editFarmBtn" class="hidden bg-white/10 hover:bg-white/20 text-white font-semibold px-5 py-3 rounded-xl backdrop-blur border border-white/20 transition">
+                        <i class="fa-solid fa-pen-to-square mr-2"></i> Edit Farm Details
+                    </button>
+                </div>
+            </div>
+            <div class="w-full md:w-auto flex justify-center">
+                <div class="relative w-72 sm:w-80 h-48 sm:h-56 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10 bg-slate-800 flex items-center justify-center">
+                    <img id="heroImage" src="https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80" alt="Aquarium fish" class="w-full h-full object-cover opacity-90">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-4">
+                        <p class="text-xs text-cyan-300 font-semibold flex items-center"><i class="fa-solid fa-circle-check mr-1.5"></i> Farm Verified Stock</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main id="catalogSection" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow w-full">
+        <!-- Section Header & Controls -->
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+            <div>
+                <h3 class="text-2xl font-bold text-slate-900 tracking-tight">Farm Catalog & Inventory</h3>
+                <p class="text-sm text-slate-500">Click any product to watch videos, inspect photos, and read/write customer reviews.</p>
+            </div>
+
+            <!-- Add Product Button (Visible only in Admin Mode) -->
+            <div id="adminActionContainer" class="hidden">
+                <button onclick="openProductModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-xl font-semibold shadow-md shadow-emerald-600/20 flex items-center space-x-2 transition">
+                    <i class="fa-solid fa-plus-circle"></i>
+                    <span>Add New Product</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Filters and Search Bar -->
+        <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 mb-8 flex flex-col lg:flex-row gap-4 items-center justify-between">
+            <!-- Category Tabs -->
+            <div id="categoryTabs" class="flex flex-wrap gap-2 w-full lg:w-auto">
+                <button onclick="filterCategory('All')" class="category-btn px-4 py-2 rounded-xl text-sm font-semibold transition bg-cyan-600 text-white shadow-sm" data-category="All">
+                    All Items
+                </button>
+                <button onclick="filterCategory('Live Fish & Plants')" class="category-btn px-4 py-2 rounded-xl text-sm font-semibold transition bg-slate-100 text-slate-600 hover:bg-slate-200" data-category="Live Fish & Plants">
+                    Live Fish & Plants
+                </button>
+                <button onclick="filterCategory('Feed & Cultures')" class="category-btn px-4 py-2 rounded-xl text-sm font-semibold transition bg-slate-100 text-slate-600 hover:bg-slate-200" data-category="Feed & Cultures">
+                    Feed & Cultures
+                </button>
+                <button onclick="filterCategory('Dry Items & Medicine')" class="category-btn px-4 py-2 rounded-xl text-sm font-semibold transition bg-slate-100 text-slate-600 hover:bg-slate-200" data-category="Dry Items & Medicine">
+                    Dry Items & Medicine
+                </button>
+            </div>
+
+            <!-- Search Input -->
+            <div class="relative w-full lg:w-72">
+                <i class="fa-solid fa-search absolute left-3.5 top-3.5 text-slate-400"></i>
+                <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search fish, feed, medicine..." class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:bg-white transition">
+            </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Dynamically populated via JavaScript -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="hidden text-center py-16">
+            <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                <i class="fa-solid fa-box-open"></i>
+            </div>
+            <h4 class="text-lg font-bold text-slate-700">No products found</h4>
+            <p class="text-sm text-slate-500 mt-1">Try searching for something else or add a new product in Admin Mode.</p>
+        </div>
+    </main>
+
+    <div id="cartModal" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="toggleCartModal(false)"></div>
+        <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col justify-between">
+                <!-- Cart Header -->
+                <div class="p-6 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-cart-shopping text-cyan-600"></i>
+                        <h3 class="text-lg font-bold text-slate-900">Your Shopping Cart</h3>
+                    </div>
+                    <button onclick="toggleCartModal(false)" class="text-slate-400 hover:text-slate-600 p-2 rounded-lg">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Cart Items List -->
+                <div id="cartItemsList" class="p-6 overflow-y-auto flex-grow divide-y divide-slate-100">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <!-- Cart Footer & Checkout -->
+                <div class="p-6 border-t border-slate-200 bg-slate-50">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-sm font-medium text-slate-600">Subtotal:</span>
+                        <span id="cartSubtotal" class="text-xl font-black text-slate-900">₹0.00</span>
+                    </div>
+                    <button onclick="openCheckoutModal()" id="checkoutBtn" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white py-3.5 rounded-xl font-bold shadow-lg shadow-cyan-600/20 transition flex items-center justify-center space-x-2">
+                        <span>Proceed to Checkout</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="productDetailModal" class="fixed inset-0 z-50 overflow-y-auto hidden">
+        <div class="min-h-screen px-4 text-center flex items-center justify-center">
+            <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm transition-opacity" onclick="closeProductDetailModal()"></div>
+            <div class="inline-block w-full max-w-3xl p-6 my-8 text-left align-middle transition-all transform bg-white shadow-2xl rounded-3xl relative z-10 max-h-[90vh] overflow-y-auto">
+                <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
+                    <div class="flex items-center space-x-3">
+                        <span id="detailCategory" class="px-3 py-1 bg-cyan-50 text-cyan-700 text-xs font-bold rounded-full border border-cyan-200">Category</span>
+                        <span id="detailStock" class="px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold rounded-full border border-emerald-200">In Stock</span>
+                    </div>
+                    <button onclick="closeProductDetailModal()" class="text-slate-400 hover:text-slate-600 p-2 rounded-full hover:bg-slate-100"><i class="fa-solid fa-xmark text-lg"></i></button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <!-- Media Area (Image or Video) -->
+                    <div>
+                        <div id="detailMediaContainer" class="w-full h-64 rounded-2xl overflow-hidden bg-slate-900 shadow-inner flex items-center justify-center relative">
+                            <!-- Populated dynamically: Image or Video embed -->
+                        </div>
+                        <div id="videoToggleContainer" class="flex gap-2 mt-3">
+                            <button onclick="switchDetailMedia('photo')" id="photoTabBtn" class="flex-1 py-2 bg-cyan-600 text-white text-xs font-bold rounded-xl shadow-sm transition">
+                                <i class="fa-solid fa-image mr-1"></i> Photo View
+                            </button>
+                            <button onclick="switchDetailMedia('video')" id="videoTabBtn" class="flex-1 py-2 bg-slate-100 text-slate-700 text-xs font-bold rounded-xl hover:bg-slate-200 transition">
+                                <i class="fa-solid fa-video mr-1"></i> Watch Video
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Info Area -->
+                    <div class="flex flex-col justify-between">
+                        <div>
+                            <h3 id="detailTitle" class="text-2xl font-extrabold text-slate-900 mb-2">Product Name</h3>
+                            <div class="text-2xl font-black text-cyan-700 mb-4" id="detailPrice">₹0.00</div>
+                            <p id="detailDesc" class="text-sm text-slate-600 leading-relaxed mb-6">Detailed description goes here...</p>
+                        </div>
+                        <div id="detailActionArea">
+                            <button id="detailAddToCartBtn" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white py-3 rounded-xl font-bold shadow-lg shadow-cyan-600/20 transition flex items-center justify-center space-x-2">
+                                <i class="fa-solid fa-cart-plus"></i>
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customer Reviews Section -->
+                <div class="border-t border-slate-200 pt-6 mt-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-lg font-bold text-slate-900 flex items-center">
+                            <i class="fa-solid fa-star text-amber-400 mr-2"></i> Customer Reviews & Ratings
+                            <span id="reviewCountBadge" class="ml-2 text-xs bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-full font-semibold">0</span>
+                        </h4>
+                    </div>
+
+                    <!-- Reviews List -->
+                    <div id="reviewsList" class="space-y-3 mb-6 max-h-60 overflow-y-auto pr-2">
+                        <!-- Populated dynamically -->
+                    </div>
+
+                    <!-- Add Review Form -->
+                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                        <h5 class="text-sm font-bold text-slate-800 mb-3">Leave Your Review</h5>
+                        <form onsubmit="submitReview(event)" class="space-y-3">
+                            <input type="hidden" id="reviewProductId">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-1">Your Name</label>
+                                    <input type="text" id="reviewerName" required class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="Ananya Sharma">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-1">Rating</label>
+                                    <select id="reviewRating" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                                        <option value="5">⭐⭐⭐⭐⭐ (5/5 - Excellent)</option>
+                                        <option value="4">⭐⭐⭐⭐ (4/5 - Very Good)</option>
+                                        <option value="3">⭐⭐⭐ (3/5 - Good)</option>
+                                        <option value="2">⭐⭐ (2/5 - Average)</option>
+                                        <option value="1">⭐ (1/5 - Poor)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1">Your Feedback / Experience</label>
+                                <textarea id="reviewComment" rows="2" required class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="Super healthy fish, active swimming and arrived safely!"></textarea>
+                            </div>
+                            <div class="flex justify-end">
+                                <button type="submit" class="bg-slate-900 hover:bg-slate-800 text-white px-5 py-2 rounded-xl text-xs font-bold shadow transition">
+                                    Submit Review
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="productModal" class="fixed inset-0 z-50 overflow-y-auto hidden">
+        <div class="min-h-screen px-4 text-center flex items-center justify-center">
+            <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeProductModal()"></div>
+            <div class="inline-block w-full max-w-lg p-6 my-8 text-left align-middle transition-all transform bg-white shadow-2xl rounded-2xl relative z-10">
+                <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
+                    <h3 id="productModalTitle" class="text-lg font-bold text-slate-900">Add New Product</h3>
+                    <button onclick="closeProductModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+                </div>
+                <form id="productForm" onsubmit="saveProduct(event)" class="space-y-4">
+                    <input type="hidden" id="productId">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Product Name</label>
+                        <input type="text" id="prodName" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="e.g., Guppy Pair / Artemia Cysts">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Category</label>
+                        <select id="prodCategory" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                            <option value="Live Fish & Plants">Live Fish & Plants</option>
+                            <option value="Feed & Cultures">Feed & Cultures</option>
+                            <option value="Dry Items & Medicine">Dry Items & Medicine</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Price (₹)</label>
+                            <input type="number" step="0.01" id="prodPrice" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="150">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Stock Status</label>
+                            <select id="prodStock" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                                <option value="In Stock">In Stock</option>
+                                <option value="Low Stock">Low Stock</option>
+                                <option value="Out of Stock">Out of Stock</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Photo Image URL</label>
+                        <input type="url" id="prodImage" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="https://images.unsplash.com/...">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Video URL (YouTube embed or MP4 link)</label>
+                        <input type="url" id="prodVideo" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="https://www.youtube.com/embed/... or MP4 link">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Description</label>
+                        <textarea id="prodDesc" rows="3" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="Write details about size, water parameters, feeding habits..."></textarea>
+                    </div>
+                    <div class="flex justify-end space-x-3 pt-3">
+                        <button type="button" onclick="closeProductModal()" class="px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:bg-slate-100">Cancel</button>
+                        <button type="submit" class="px-5 py-2.5 bg-cyan-600 hover:bg-cyan-700 text-white rounded-xl text-sm font-semibold shadow-md shadow-cyan-600/20">Save Product</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="farmModal" class="fixed inset-0 z-50 overflow-y-auto hidden">
+        <div class="min-h-screen px-4 text-center flex items-center justify-center">
+            <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeFarmSettingsModal()"></div>
+            <div class="inline-block w-full max-w-md p-6 my-8 text-left align-middle transition-all transform bg-white shadow-2xl rounded-2xl relative z-10">
+                <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
+                    <h3 class="text-lg font-bold text-slate-900">Edit Farm Branding</h3>
+                    <button onclick="closeFarmSettingsModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+                </div>
+                <form id="farmForm" onsubmit="saveFarmSettings(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Farm Name</label>
+                        <input type="text" id="farmNameInput" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Subtitle / Tagline</label>
+                        <input type="text" id="farmSubtitleInput" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Hero Heading</label>
+                        <input type="text" id="farmHeroHeadingInput" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Hero Image URL</label>
+                        <input type="url" id="farmHeroImageInput" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                    </div>
+                    <div class="flex justify-end space-x-3 pt-3">
+                        <button type="button" onclick="closeFarmSettingsModal()" class="px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:bg-slate-100">Cancel</button>
+                        <button type="submit" class="px-5 py-2.5 bg-cyan-600 hover:bg-cyan-700 text-white rounded-xl text-sm font-semibold shadow-md shadow-cyan-600/20">Update Farm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="checkoutModal" class="fixed inset-0 z-50 overflow-y-auto hidden">
+        <div class="min-h-screen px-4 text-center flex items-center justify-center">
+            <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeCheckoutModal()"></div>
+            <div class="inline-block w-full max-w-lg p-6 my-8 text-left align-middle transition-all transform bg-white shadow-2xl rounded-2xl relative z-10">
+                <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
+                    <h3 class="text-lg font-bold text-slate-900">Complete Your Order</h3>
+                    <button onclick="closeCheckoutModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+                </div>
+                <form onsubmit="submitOrder(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Full Name</label>
+                        <input type="text" id="customerName" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="Rajesh Kumar">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Phone Number</label>
+                            <input type="tel" id="customerPhone" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="9876543210">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">City / Location</label>
+                            <input type="text" id="customerCity" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="Bangalore">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Delivery Address</label>
+                        <textarea id="customerAddress" rows="2" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="House No, Street, Landmark..."></textarea>
+                    </div>
+                    <div class="p-3.5 bg-cyan-50 rounded-xl border border-cyan-100 text-xs text-cyan-900">
+                        <i class="fa-solid fa-circle-info mr-1.5 text-cyan-600"></i> Orders are dispatched directly from our breeding farm via bus parcel, train cargo, or local door delivery.
+                    </div>
+                    <div class="flex justify-end space-x-3 pt-3">
+                        <button type="button" onclick="closeCheckoutModal()" class="px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:bg-slate-100">Cancel</button>
+                        <button type="submit" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-sm font-semibold shadow-md shadow-emerald-600/20">Confirm Order</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center space-x-3 border border-slate-700">
+            <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+            <div>
+                <h5 id="toastTitle" class="text-sm font-bold">Success</h5>
+                <p id="toastMsg" class="text-xs text-slate-300">Item updated successfully.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-slate-900 text-white border-t border-slate-800 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-cyan-600 rounded-xl flex items-center justify-center text-white">
+                            <i class="fa-solid fa-fish text-xl"></i>
+                        </div>
+                        <h4 id="footerBrand" class="text-lg font-bold">Aqua Fish Farm</h4>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Dedicated breeding and supply of healthy ornamental fish, top-grade artemia/infusoria cultures, and specialized aquaculture medicines with video inspection.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="text-sm font-bold uppercase tracking-wider text-cyan-400 mb-4">Quick Links</h5>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li><a href="#catalogSection" class="hover:text-cyan-400 transition">Live Fish Inventory</a></li>
+                        <li><a href="#catalogSection" class="hover:text-cyan-400 transition">Feed & Cultures</a></li>
+                        <li><a href="#catalogSection" class="hover:text-cyan-400 transition">Medicines & Care</a></li>
+                        <li><button onclick="toggleAdminMode()" class="hover:text-cyan-400 transition text-left">Admin & Catalog Manager</button></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-sm font-bold uppercase tracking-wider text-cyan-400 mb-4">Farm Contact & Support</h5>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-phone text-cyan-500 w-5"></i> <span>+91 98765 43210</span></li>
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-envelope text-cyan-500 w-5"></i> <span>support@aquafishfarm.com</span></li>
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-location-dot text-cyan-500 w-5"></i> <span>Aquarium Breeding Hub, India</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-6 text-center text-xs text-slate-500">
+                &copy; <span id="footerYear">2026</span> <span id="footerBrandName">Aqua Fish Farm</span>. All rights reserved. Built with live video & reviews studio.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initial Farm Details State
+        let farmSettings = JSON.parse(localStorage.getItem('aqua_farm_settings')) || {
+            name: "Aqua Fish Farm",
+            subtitle: "Direct Breeder & Supplier",
+            heroHeading: "Healthy Fish. Vibrant Aquariums. Direct From Our Farm.",
+            heroImage: "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80"
+        };
+
+        // Initial Products State with Video URLs & Reviews
+        const defaultProducts = [
+            {
+                id: 1,
+                name: "Red Cobra Guppy Pair",
+                category: "Live Fish & Plants",
+                price: 250,
+                stock: "In Stock",
+                image: "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=600&q=80",
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Demo embed
+                desc: "Active, healthy young breeding pair with vibrant red cobra tail patterns.",
+                reviews: [
+                    { name: "Suresh Rao", rating: 5, comment: "Active swimmers and very vibrant red coloration!" },
+                    { name: "Priya Menon", rating: 5, comment: "Healthy pair received safely in Bangalore." }
+                ]
+            },
+            {
+                id: 2,
+                name: "Halfmoon Betta Male",
+                category: "Live Fish & Plants",
+                price: 350,
+                stock: "In Stock",
+                image: "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=600&q=80",
+                video: "",
+                desc: "Stunning finnage and rich coloration. Conditioned on high-protein pellets.",
+                reviews: [
+                    { name: "Kiran Kumar", rating: 4, comment: "Gorgeous fins, flared right out of the box." }
+                ]
+            },
+            {
+                id: 3,
+                name: "Artemia Cysts (Brine Shrimp Eggs)",
+                category: "Feed & Cultures",
+                price: 480,
+                stock: "In Stock",
+                image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80",
+                video: "",
+                desc: "High hatch rate (90%+) premium quality brine shrimp eggs for fry feeding.",
+                reviews: [
+                    { name: "Dr. Ramesh", rating: 5, comment: "Excellent hatch rate within 24 hours. Fry love it." }
+                ]
+            },
+            {
+                id: 4,
+                name: "Live Infusoria Culture",
+                category: "Feed & Cultures",
+                price: 150,
+                stock: "Low Stock",
+                image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
+                video: "",
+                desc: "Essential first food for newborn egg-scattering fry (Betta, Tetras).",
+                reviews: []
+            },
+            {
+                id: 5,
+                name: "Anti-Ich & Fungus Liquid",
+                category: "Dry Items & Medicine",
+                price: 180,
+                stock: "In Stock",
+                image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80",
+                video: "",
+                desc: "Rapid relief treatment for white spots, fin rot, and velvet in freshwater tanks.",
+                reviews: [
+                    { name: "Amit Patel", rating: 5, comment: "Cured white spot within 3 days. Must-have medicine." }
+                ]
+            },
+            {
+                id: 6,
+                name: "Amazon Sword Live Plant",
+                category: "Live Fish & Plants",
+                price: 120,
+                stock: "In Stock",
+                image: "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=600&q=80",
+                video: "",
+                desc: "Hardy background aquarium plant that absorbs nitrates and oxygenates water.",
+                reviews: []
+            }
+        ];
+
+        let products = JSON.parse(localStorage.getItem('aqua_products')) || defaultProducts;
+        let cart = JSON.parse(localStorage.getItem('aqua_cart')) || [];
+        let isAdminMode = false;
+        let currentCategory = 'All';
+        let searchQuery = '';
+        let currentDetailProduct = null;
+        let activeMediaTab = 'photo';
+
+        // Helper function for logo / home reset
+        function switchTab(tabName) {
+            if (tabName === 'shop') {
+                filterCategory('All');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Initialize App on Load
+        window.onload = function() {
+            renderFarmSettings();
+// ... existing code ... -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Shastha Guppy Farm</title>
